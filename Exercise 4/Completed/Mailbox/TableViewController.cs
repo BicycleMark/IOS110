@@ -17,8 +17,6 @@ namespace Mailbox
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
-            TableView.ContentInset = new UIEdgeInsets(20, 0, 0, 0);
         }
 
         public override nint RowsInSection(UITableView tableview, nint section)
@@ -35,7 +33,7 @@ namespace Mailbox
             cell.DetailTextLabel.Font = UIFont.FromName("Helvetica Light", 12);
             cell.DetailTextLabel.TextColor = UIColor.LightGray;
 
-            cell.TextLabel.Text = item.Subject.Substring(0,20) + "...";
+            cell.TextLabel.Text = item.Subject.Substring(0, Math.Min(20, item.Subject.Length)) + "...";
             cell.ImageView.Image = item.GetImage();
             cell.DetailTextLabel.Text = item.Body;
 

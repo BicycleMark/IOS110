@@ -66,7 +66,7 @@ namespace Mailbox
 
                 var item = emailServer.Email[indexPath.Row];
 
-                cell.TextLabel.Text = item.Subject.Substring(0,20) + "...";
+                cell.TextLabel.Text = item.Subject.Substring(0, Math.Min(20, item.Subject.Length)) + "...";
                 cell.ImageView.Image = item.GetImage();
                 cell.DetailTextLabel.Text = item.Body;
 
@@ -90,8 +90,6 @@ namespace Mailbox
 
             tableView.BackgroundColor = UIColor.Yellow;
             tableView.TranslatesAutoresizingMaskIntoConstraints = false;
-
-            tableView.ContentInset = new UIEdgeInsets(20, 0, 0, 0);
 
             View.AddConstraint(NSLayoutConstraint.Create(tableView, NSLayoutAttribute.Top,
                 NSLayoutRelation.Equal, View, NSLayoutAttribute.TopMargin, 1, 0));
